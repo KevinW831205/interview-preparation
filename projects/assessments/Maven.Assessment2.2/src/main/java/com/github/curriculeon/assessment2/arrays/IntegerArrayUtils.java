@@ -1,5 +1,7 @@
 package com.github.curriculeon.assessment2.arrays;
 
+import java.util.Arrays;
+
 /**
  * @author leon on 28/11/2018.
  */
@@ -10,7 +12,9 @@ public class IntegerArrayUtils {
      * @return - identical array with one additional element of `valueToBeAdded` at the end of the array
      */
     public static Integer[] add(Integer[] integerArray, Integer valueToBeAdded) {
-        return null;
+        Integer[] newArr = Arrays.copyOf(integerArray,integerArray.length+1);
+        newArr[newArr.length-1] = valueToBeAdded;
+        return newArr;
     }
 
     /**
@@ -20,7 +24,8 @@ public class IntegerArrayUtils {
      * @return `integerArray` with `valueToBeInserted` at index number `indexToInsertAt`
      */
     public static Integer[] replace(Integer[] integerArray, int indexToInsertAt, Integer valueToBeInserted) {
-        return null;
+        integerArray[indexToInsertAt] =valueToBeInserted;
+        return integerArray;
     }
 
     /**
