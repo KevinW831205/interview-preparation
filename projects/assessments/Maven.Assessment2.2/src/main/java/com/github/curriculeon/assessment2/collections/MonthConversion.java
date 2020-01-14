@@ -1,5 +1,10 @@
 package com.github.curriculeon.assessment2.collections;
 
+import java.lang.reflect.AnnotatedArrayType;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Use a map to solve
  */
@@ -8,8 +13,9 @@ public class MonthConversion {
      * @param monthNumber - ordinal of month in the year; i.e. January = 1, February = 2
      * @param monthName - name of month
      */
+    Map<Integer, String> monthMap = new HashMap<>();
     public void add(Integer monthNumber, String monthName) {
-
+        monthMap.put(monthNumber,monthName);
     }
 
     /**
@@ -17,6 +23,10 @@ public class MonthConversion {
      * @return the name of the respective month
      */
     public String getName(Integer monthNumber) {
+        String name = monthMap.get(monthNumber);
+        if(name != null){
+            return name;
+        }
         throw new NullPointerException();
     }
 
@@ -25,6 +35,12 @@ public class MonthConversion {
      * @return - the ordinal of the month in the year
      */
     public int getNumber(String monthName) {
+        Set<Integer> keyset = monthMap.keySet();
+        for(Integer key: keyset){
+            if(monthMap.get(key).equals(monthName)){
+                return key;
+            }
+        }
         return (Integer)null;
     }
 
@@ -48,7 +64,7 @@ public class MonthConversion {
      * @return number of entries in this mapping
      */
     public Integer size() {
-        return -1;
+        return monthMap.size();
     }
 
     /**
@@ -58,4 +74,6 @@ public class MonthConversion {
     public void update(Integer monthNumber, String monthName) {
 
     }
+
+
 }
