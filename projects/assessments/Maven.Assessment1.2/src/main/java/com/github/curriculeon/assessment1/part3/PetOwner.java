@@ -14,6 +14,7 @@ public class PetOwner {
      */
     String name;
     Pet[] pets;
+
     public PetOwner(String name, Pet... pets) {
         this.name = name;
         this.pets = pets;
@@ -24,7 +25,7 @@ public class PetOwner {
      */
     public void addPet(Pet pet) {
         List<Pet> petList;
-        if(this.pets == null){
+        if (this.pets == null) {
             petList = new ArrayList<>();
         } else {
             petList = new ArrayList<>(Arrays.asList(this.pets));
@@ -38,12 +39,17 @@ public class PetOwner {
      */
     public void removePet(Pet pet) {
         List<Pet> petList;
-        if(this.pets == null){
+        if (this.pets == null) {
             petList = new ArrayList<>();
         } else {
             petList = new ArrayList<>(Arrays.asList(this.pets));
-        }        petList.remove(pet);
-        this.pets = petList.toArray(new Pet[0]);
+        }
+        petList.remove(pet);
+        if (petList.size() == 0){
+            this.pets = new Pet[]{null};
+        } else {
+            this.pets = petList.toArray(new Pet[0]);
+        }
     }
 
     /**
@@ -60,13 +66,11 @@ public class PetOwner {
      */
     public Integer getYoungetPetAge() {
         int youngestAge = pets[0].getAge();
-        for(Pet pet : pets){
+        for (Pet pet : pets) {
             youngestAge = Math.min(youngestAge, pet.getAge());
         }
         return youngestAge;
     }
-
-
 
 
     /**
@@ -74,7 +78,7 @@ public class PetOwner {
      */
     public Integer getOldestPetAge() {
         int oldestAge = pets[0].getAge();
-        for(Pet pet : pets){
+        for (Pet pet : pets) {
             oldestAge = Math.max(oldestAge, pet.getAge());
         }
         return oldestAge;
@@ -86,10 +90,10 @@ public class PetOwner {
      */
     public Float getAveragePetAge() {
         Integer sum = 0;
-        for(Pet pet : pets){
+        for (Pet pet : pets) {
             sum += pet.getAge();
         }
-        return sum.floatValue()/pets.length;
+        return sum.floatValue() / pets.length;
     }
 
     /**
