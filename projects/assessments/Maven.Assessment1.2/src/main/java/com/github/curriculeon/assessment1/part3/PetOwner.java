@@ -52,7 +52,7 @@ public class PetOwner {
     public Integer getYoungetPetAge() {
         int youngestAge = pets[0].getAge();
         for(Pet pet : pets){
-            Math.min(youngestAge, pet.getAge());
+            youngestAge = Math.min(youngestAge, pet.getAge());
         }
         return youngestAge;
     }
@@ -66,7 +66,7 @@ public class PetOwner {
     public Integer getOldestPetAge() {
         int oldestAge = pets[0].getAge();
         for(Pet pet : pets){
-            Math.max(oldestAge, pet.getAge());
+            oldestAge = Math.max(oldestAge, pet.getAge());
         }
         return oldestAge;
     }
