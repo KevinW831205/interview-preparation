@@ -11,13 +11,14 @@ public abstract class Pet implements Animal {
     String name;
     Integer age;
     public Pet() {
-
+        this("",0)
     }
 
     /**
      * @param name name of this pet
      */
     public Pet(String name) {
+        this(name,0)
     }
 
 
