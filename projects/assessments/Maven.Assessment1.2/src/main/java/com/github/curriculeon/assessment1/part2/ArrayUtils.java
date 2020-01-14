@@ -103,7 +103,7 @@ public class ArrayUtils {
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
-        Object[] result = new Object[objectArray.length + objectArrayToAdd.length - 2];
+        Object[] result = new Object[objectArray.length + objectArrayToAdd.length];
         for(int i = 0; i<objectArray.length; i++){
             result[i] = objectArray[i];
         }

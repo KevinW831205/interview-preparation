@@ -1,5 +1,9 @@
 package com.github.curriculeon.assessment1.part3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -8,20 +12,29 @@ public class PetOwner {
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
+    String name;
+    Pet[] pets;
     public PetOwner(String name, Pet... pets) {
+        this.name = name;
+        this.pets = pets;
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+        List<Pet> petList = new ArrayList<>(Arrays.asList(this.pets));
+        petList.add(pet);
+        this.pets = petList.toArray(new Pet[0]);
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-
+        List<Pet> petList = new ArrayList<>(Arrays.asList(this.pets));
+        petList.remove(pet);
+        this.pets = petList.toArray(new Pet[0]);
     }
 
     /**
@@ -29,7 +42,8 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        return null;
+        List<Pet> petList = new ArrayList<>(Arrays.asList(this.pets));
+        return petList.contains(pet);
     }
 
     /**
