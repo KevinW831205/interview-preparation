@@ -14,8 +14,9 @@ public class MonthConversion {
      * @param monthName - name of month
      */
     Map<Integer, String> monthMap = new HashMap<>();
+
     public void add(Integer monthNumber, String monthName) {
-        monthMap.put(monthNumber,monthName);
+        monthMap.put(monthNumber, monthName);
     }
 
     /**
@@ -24,24 +25,21 @@ public class MonthConversion {
      */
     public String getName(Integer monthNumber) {
         String name = monthMap.get(monthNumber);
-        if(name != null){
-            return name;
-        }
-        throw new NullPointerException();
+        return name;
     }
 
     /**
      * @param monthName - name of month
      * @return - the ordinal of the month in the year
      */
-    public int getNumber(String monthName) {
+    public Integer getNumber(String monthName) {
         Set<Integer> keyset = monthMap.keySet();
-        for(Integer key: keyset){
-            if(monthMap.get(key).equals(monthName)){
+        for (Integer key : keyset) {
+            if (monthMap.get(key).equals(monthName)) {
                 return key;
             }
         }
-        return (Integer)null;
+        return null;
     }
 
     /**
@@ -49,7 +47,8 @@ public class MonthConversion {
      * @return true if the monthNumber is in the keySet
      */
     public Boolean isValidNumber(Integer monthNumber) {
-        return null;
+
+        return monthMap.containsKey(monthNumber);
     }
 
     /**
@@ -57,7 +56,7 @@ public class MonthConversion {
      * @return true if the monthName is in the valueSet
      */
     public Boolean isValidMonth(String monthName) {
-        return null;
+        return monthMap.containsValue(monthName);
     }
 
     /**
@@ -69,10 +68,10 @@ public class MonthConversion {
 
     /**
      * @param monthNumber - number of month in year
-     * @param monthName - name of month
+     * @param monthName   - name of month
      */
     public void update(Integer monthNumber, String monthName) {
-
+        monthMap.put(monthNumber, monthName);
     }
 
 
