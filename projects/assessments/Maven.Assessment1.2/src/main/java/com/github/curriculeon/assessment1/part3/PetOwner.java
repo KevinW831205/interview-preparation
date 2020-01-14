@@ -23,7 +23,12 @@ public class PetOwner {
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
-        List<Pet> petList = new ArrayList<>(Arrays.asList(this.pets));
+        List<Pet> petList;
+        if(this.pets == null){
+            petList = new ArrayList<>();
+        } else {
+            petList = new ArrayList<>(Arrays.asList(this.pets));
+        }
         petList.add(pet);
         this.pets = petList.toArray(new Pet[0]);
     }
@@ -32,8 +37,12 @@ public class PetOwner {
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-        List<Pet> petList = new ArrayList<>(Arrays.asList(this.pets));
-        petList.remove(pet);
+        List<Pet> petList;
+        if(this.pets == null){
+            petList = new ArrayList<>();
+        } else {
+            petList = new ArrayList<>(Arrays.asList(this.pets));
+        }        petList.remove(pet);
         this.pets = petList.toArray(new Pet[0]);
     }
 
@@ -94,13 +103,13 @@ public class PetOwner {
      * @return the name property of the Pet
      */
     public String getName() {
-        return null;
+        return this.name;
     }
 
     /**
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
-        return null;
+        return this.pets;
     }
 }
